@@ -1,3 +1,5 @@
+"use client";
+
 import type { Pokemon } from "@/lib/schemas";
 import Image from "next/image";
 import { use } from "react";
@@ -7,6 +9,7 @@ import { use } from "react";
 
 export default function PostDetail({ promise }: { promise: Promise<Pokemon> }) {
   const pokemon = use(promise);
+
   return (
     <>
       <h2>{pokemon.name}</h2>
@@ -16,6 +19,7 @@ export default function PostDetail({ promise }: { promise: Promise<Pokemon> }) {
           alt={pokemon.name}
           width={96}
           height={96}
+          loading="eager"
         />
       )}
     </>

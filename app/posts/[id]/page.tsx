@@ -11,9 +11,7 @@ export default async function Page({
   params: Promise<{ id: string }>;
 }) {
   const { id } = await params;
-
   const post = await getPost(id);
-  console.log(post);
 
   return (
     <>

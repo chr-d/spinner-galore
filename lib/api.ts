@@ -6,6 +6,7 @@ import {
   PostSchema,
   PostsSchema,
 } from "@/lib/schemas";
+import { notFound } from "next/navigation";
 
 // 1: Erstelle getPosts(), getPost(id), getPokemonList() und getPokemon(id).
 // Jede Funktion: fetch → response.ok prüfen → response.json() → Schema.parse(data).
@@ -24,6 +25,7 @@ const getPost = async (id: string) => {
   const response = await fetch(
     `https://jsonplaceholder.typicode.com/posts/${id}`,
   );
+  if (response.status === 404) notFound();
   if (!response.ok) {
     throw new Error("Failed to load post");
   }
@@ -42,6 +44,7 @@ const getPokemonList = async () => {
 
 const getPokemon = async (id: string) => {
   const response = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+  if (response.status === 404) notFound();
   if (!response.ok) {
     throw new Error("Failed to load Pokemon");
   }

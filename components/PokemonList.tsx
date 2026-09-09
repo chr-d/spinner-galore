@@ -15,9 +15,9 @@ export default function PokemonList({
   const pokemons = use(promise);
   return (
     <ul>
-      {pokemons.results.map((pokemon, index) => (
+      {pokemons.results.map((pokemon) => (
         <li key={pokemon.name}>
-          <Link href={`/pokemon/${index + 1}`}>{pokemon.name}</Link>
+          <Link href={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
         </li>
       ))}
     </ul>
